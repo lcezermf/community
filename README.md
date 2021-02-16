@@ -38,3 +38,13 @@ mutation {
   }
 }
 ```
+
+#### Delete link
+
+```json
+mutation {
+  deleteLink(id: 1) {
+    id, description, url
+  }
+}
+```

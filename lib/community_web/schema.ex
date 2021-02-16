@@ -30,5 +30,12 @@ defmodule CommunityWeb.Schema do
 
       resolve(&NewsResolver.create_link/3)
     end
+
+    @desc "Delete link"
+    field :delete_link, :link do
+      arg :id, non_null(:id)
+
+      resolve(&NewsResolver.delete_link/3)
+    end
   end
 end

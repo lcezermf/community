@@ -21,4 +21,17 @@ defmodule CommunityWeb.NewsResolver do
         {:error, "could not create link"}
     end
   end
+
+  def delete_link(_root, %{id: id}, _info) do
+    link = News.get_link!(id)
+
+    case News.delete_link(link) do
+      {:ok, link} ->
+        {:ok, link}
+      {:error, _changeset} ->
+        {:error, "could not delete link"}
+    end
+  rescue Ecto.NoResultsError ->
+    {:error, "could not find link"}
+  end
 end
