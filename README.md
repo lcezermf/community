@@ -48,3 +48,13 @@ mutation {
   }
 }
 ```
+
+#### Update link
+
+```json
+mutation {
+  updateLink(id: 5, params: {url: "full.com.br", description: "full change"}) {
+    id, url, description
+  }
+}
+```

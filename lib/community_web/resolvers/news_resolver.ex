@@ -34,4 +34,17 @@ defmodule CommunityWeb.NewsResolver do
   rescue Ecto.NoResultsError ->
     {:error, "could not find link"}
   end
+
+  def update_link(_root, %{id: id, params: params}, _info) do
+    link = News.get_link!(id)
+
+    case News.update_link(link, params) do
+      {:ok, link} ->
+        {:ok, link}
+      {:error, _changeset} ->
+        {:error, "could not update link"}
+    end
+  rescue Ecto.NoResultsError ->
+    {:error, "could not find link"}
+  end
 end
